@@ -20,7 +20,7 @@ namespace TrafficConeBuilder
             Kompas = kompas;
             _builders = new List<IComponentBuilder>()
             {
-                new SketchBuilder(), new CircullarExtrusionBuilder()
+                new SketchBuilder(), new CircullarExtrusionBuilder(), new CutBuilder()
             };
         }
 
