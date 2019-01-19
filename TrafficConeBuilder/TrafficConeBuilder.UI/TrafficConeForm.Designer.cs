@@ -122,6 +122,7 @@
             this.baseWidthTextBox.Name = "baseWidthTextBox";
             this.baseWidthTextBox.Size = new System.Drawing.Size(139, 27);
             this.baseWidthTextBox.TabIndex = 12;
+            this.baseWidthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label5
             // 
@@ -138,6 +139,7 @@
             this.coneWidthTextBox.Name = "coneWidthTextBox";
             this.coneWidthTextBox.Size = new System.Drawing.Size(139, 27);
             this.coneWidthTextBox.TabIndex = 10;
+            this.coneWidthTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label4
             // 
@@ -154,6 +156,7 @@
             this.baseHeightTextBox.Name = "baseHeightTextBox";
             this.baseHeightTextBox.Size = new System.Drawing.Size(139, 27);
             this.baseHeightTextBox.TabIndex = 8;
+            this.baseHeightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label3
             // 
@@ -170,6 +173,7 @@
             this.lowerHoleTextBox.Name = "lowerHoleTextBox";
             this.lowerHoleTextBox.Size = new System.Drawing.Size(139, 27);
             this.lowerHoleTextBox.TabIndex = 6;
+            this.lowerHoleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label2
             // 
@@ -186,7 +190,7 @@
             this.baseConeTextBox.Name = "baseConeTextBox";
             this.baseConeTextBox.Size = new System.Drawing.Size(139, 27);
             this.baseConeTextBox.TabIndex = 4;
-            this.baseConeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BaseConeTextBox_KeyPress);
+            this.baseConeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox_KeyPress);
             // 
             // label1
             // 

@@ -18,7 +18,9 @@ namespace TrafficConeBuilder.Parameters
         {
             if (max < min || max == min)
             {
-                throw new ArgumentException("max can not be less min or equal");
+                throw new ArgumentException(
+                    $"{name.ToString()} containts error. Min: {min.ToString()} " +
+                    $"Max: {max.ToString()}. Max does not be less min");
             }
 
             ValidateDouble(max);

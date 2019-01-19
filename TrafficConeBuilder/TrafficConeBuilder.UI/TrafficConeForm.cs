@@ -37,10 +37,10 @@ namespace TrafficConeBuilder.UI
             var parameters = new List<Parameter>
             {
                 new Parameter(ParameterName.B, 100, 5, bValue),
-                new Parameter(ParameterName.A, 0.5 * dValue, 1, aValue),
-                new Parameter(ParameterName.C, bValue * 0.4, 0.5, cValue),
-                new Parameter(ParameterName.D, eValue * 0.8, aValue * 1.5, dValue),
-                new Parameter(ParameterName.E, 100, dValue * 1.2, eValue)
+                new Parameter(ParameterName.A, 0.5 * dValue, 0.5, aValue),
+                new Parameter(ParameterName.C, bValue * 0.15, 0.7, cValue),
+                new Parameter(ParameterName.D, eValue * 0.9, aValue * 2, dValue),
+                new Parameter(ParameterName.E, 100, dValue * 1.1, eValue)
             };
 
             return new Parameters.Parameters(parameters);
@@ -104,21 +104,21 @@ namespace TrafficConeBuilder.UI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BaseConeTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void TextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (e.KeyChar == '.')
+            {
+                e.KeyChar = ',';
+            }
+
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-                (e.KeyChar != '.'))
+                (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
 
             // only allow one decimal point
             if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
-            {
-                e.Handled = true;
-            }
-
-            if (string.IsNullOrEmpty((sender as TextBox).Text) && e.KeyChar == '.')
             {
                 e.Handled = true;
             }

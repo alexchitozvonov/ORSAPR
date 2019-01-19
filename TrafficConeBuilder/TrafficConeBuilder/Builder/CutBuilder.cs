@@ -17,14 +17,17 @@ namespace TrafficConeBuilder.Builder
             var zxPlane = (ksEntity) part.GetDefaultEntity((short) Obj3dType.o3d_planeXOZ);
 
             var entityOffsetPlane = (ksEntity) part.NewEntity((short) Obj3dType.o3d_planeOffset);
-            var planeOffsetDefinition = (ksPlaneOffsetDefinition) entityOffsetPlane.GetDefinition();
+            var planeOffsetDefinition = (ksPlaneOffsetDefinition) 
+                entityOffsetPlane.GetDefinition();
             planeOffsetDefinition.direction = false;
             planeOffsetDefinition.offset = parameters[ParameterName.B];
             planeOffsetDefinition.SetPlane(zxPlane);
             entityOffsetPlane.Create();
 
-            var firstSketch = CreateCircleSketch(part, zxPlane, parameters[ParameterName.D] / 2);
-            var secondSketch = CreateCircleSketch(part, entityOffsetPlane, parameters[ParameterName.A] / 3);
+            var firstSketch = CreateCircleSketch(part, zxPlane, 
+                (parameters[ParameterName.D] / 2) - parameters[ParameterName.D] * 0.2);
+            var secondSketch = CreateCircleSketch(part, entityOffsetPlane, 
+                (parameters[ParameterName.A] / 2) - parameters[ParameterName.A] * 0.2);
 
             var cutLoft = (ksEntity)part.NewEntity((short)Obj3dType.o3d_cutLoft);
             var baseLoftDefinition = (ksCutLoftDefinition)cutLoft.GetDefinition();

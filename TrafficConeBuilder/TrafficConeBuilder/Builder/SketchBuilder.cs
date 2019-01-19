@@ -30,8 +30,8 @@ namespace TrafficConeBuilder.Builder
             var B = parameters[ParameterName.B];
             sketchEdit.ksLineSeg(0, 0, E / 2, 0, 1);
             sketchEdit.ksLineSeg(E / 2, 0, E / 2, C, 1);
-            sketchEdit.ksLineSeg(E / 2, C, E - D, C, 1);
-            sketchEdit.ksLineSeg(E - D, C, A / 2, B, 1);
+            sketchEdit.ksLineSeg(E / 2, C, D / 2, C, 1);
+            sketchEdit.ksLineSeg(D / 2, C, A / 2, B, 1);
             sketchEdit.ksLineSeg(A / 2, B, 0, B, 1);
             sketchEdit.ksLineSeg(0, B, 0, 0, 1);
             sketchEdit.ksLineSeg(0, -2, 0, 16, 3);
