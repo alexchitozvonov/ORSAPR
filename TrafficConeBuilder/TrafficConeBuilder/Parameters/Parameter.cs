@@ -20,7 +20,7 @@ namespace TrafficConeBuilder.Parameters
             {
                 throw new ArgumentException(
                     $"{name.ToString()} containts error. Min: {min.ToString()} " +
-                    $"Max: {max.ToString()}. Max does not be less min");
+                    $"Max: {max.ToString()}. Max does not be less or equal min");
             }
 
             ValidateDouble(max);
@@ -104,6 +104,18 @@ namespace TrafficConeBuilder.Parameters
         /// <summary>
         /// Диаметр основания дна
         /// </summary>
-        E
+        E,
+        /// <summary>
+        /// Фаска
+        /// </summary>
+        Chamfer,
+        /// <summary>
+        /// Скругление
+        /// </summary>
+        Fillet,
+        /// <summary>
+        /// Толщина стенки
+        /// </summary>
+        WallThikness
     }
 }

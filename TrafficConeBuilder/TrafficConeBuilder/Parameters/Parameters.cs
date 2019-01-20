@@ -70,6 +70,16 @@ namespace TrafficConeBuilder.Parameters
             }
         }
 
+        /// <summary>
+        /// Получить параметр фаски или скругления
+        /// </summary>
+        /// <returns></returns>
+        public Parameter GetExtendFeatureValue()
+        {
+            return _parameters.FirstOrDefault(t => t.Name == ParameterName.Chamfer) ??
+                   _parameters.FirstOrDefault(t => t.Name == ParameterName.Fillet);
+        }
+
         /// <inheritdoc />
         public IEnumerator<Parameter> GetEnumerator()
         {

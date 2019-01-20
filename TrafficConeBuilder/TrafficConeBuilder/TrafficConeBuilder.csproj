@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ChamferOrFilletBuilder.cs" />
     <Compile Include="Builder\CutBuilder.cs" />
     <Compile Include="Builder\ExtrusionBuilder.cs" />
     <Compile Include="Builder\IComponentBuilder.cs" />

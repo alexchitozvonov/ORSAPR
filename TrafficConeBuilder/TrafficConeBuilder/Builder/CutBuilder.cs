@@ -6,7 +6,7 @@ namespace TrafficConeBuilder.Builder
 {
     /// <inheritdoc />
     /// <summary>
-    /// Представляет метод для выполнения выреза по сечениям
+    ///     Представляет метод для выполнения выреза по сечениям
     /// </summary>
     public class CutBuilder : IComponentBuilder
     {
@@ -17,22 +17,25 @@ namespace TrafficConeBuilder.Builder
             var zxPlane = (ksEntity) part.GetDefaultEntity((short) Obj3dType.o3d_planeXOZ);
 
             var entityOffsetPlane = (ksEntity) part.NewEntity((short) Obj3dType.o3d_planeOffset);
-            var planeOffsetDefinition = (ksPlaneOffsetDefinition) 
+            var planeOffsetDefinition = (ksPlaneOffsetDefinition)
                 entityOffsetPlane.GetDefinition();
             planeOffsetDefinition.direction = false;
             planeOffsetDefinition.offset = parameters[ParameterName.B];
             planeOffsetDefinition.SetPlane(zxPlane);
             entityOffsetPlane.Create();
 
-            var firstSketch = CreateCircleSketch(part, zxPlane, 
-                (parameters[ParameterName.D] / 2) - parameters[ParameterName.D] * 0.2);
-            var secondSketch = CreateCircleSketch(part, entityOffsetPlane, 
-                (parameters[ParameterName.A] / 2) - parameters[ParameterName.A] * 0.2);
+            var D = parameters[ParameterName.D];
+            var A = parameters[ParameterName.A];
+            var thikness = parameters[ParameterName.WallThikness];
+            var firstSketch = CreateCircleSketch(part, zxPlane,
+                D / 2 - thikness / 2);
+            var secondSketch = CreateCircleSketch(part, entityOffsetPlane,
+                A / 2 - thikness / 2);
 
-            var cutLoft = (ksEntity)part.NewEntity((short)Obj3dType.o3d_cutLoft);
-            var baseLoftDefinition = (ksCutLoftDefinition)cutLoft.GetDefinition();
+            var cutLoft = (ksEntity) part.NewEntity((short) Obj3dType.o3d_cutLoft);
+            var baseLoftDefinition = (ksCutLoftDefinition) cutLoft.GetDefinition();
             baseLoftDefinition.SetLoftParam(false, true, true);
-            var sketches = (ksEntityCollection)baseLoftDefinition.Sketchs();
+            var sketches = (ksEntityCollection) baseLoftDefinition.Sketchs();
             sketches.Clear();
             sketches.Add(firstSketch);
             sketches.Add(secondSketch);
@@ -40,7 +43,7 @@ namespace TrafficConeBuilder.Builder
         }
 
         /// <summary>
-        /// Операция построения окружности
+        ///     Операция построения окружности
         /// </summary>
         /// <param name="part">3D-модель компаса</param>
         /// <param name="plane">плоскость на которой строить окружность</param>
@@ -49,12 +52,12 @@ namespace TrafficConeBuilder.Builder
         private ksEntity CreateCircleSketch(ksPart part, ksEntity plane, double radius)
         {
             var currentPlane = plane;
-            var sketch = (ksEntity)part.NewEntity((short)Obj3dType.o3d_sketch);
-            var sketchDefinition = (ksSketchDefinition)sketch.GetDefinition();
+            var sketch = (ksEntity) part.NewEntity((short) Obj3dType.o3d_sketch);
+            var sketchDefinition = (ksSketchDefinition) sketch.GetDefinition();
             sketchDefinition.SetPlane(currentPlane);
 
             sketch.Create();
-            var sketchEdit = (ksDocument2D)sketchDefinition.BeginEdit();
+            var sketchEdit = (ksDocument2D) sketchDefinition.BeginEdit();
             sketchEdit.ksCircle(0, 0, radius, 1);
             sketchDefinition.EndEdit();
 
